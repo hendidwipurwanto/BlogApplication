@@ -5,7 +5,7 @@
 namespace Blog.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class AddTestEntitytable : Migration
+    public partial class addTestEntitytable : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

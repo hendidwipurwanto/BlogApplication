@@ -1,6 +1,9 @@
 using Blog.Data;
+using Blog.Entities;
+using Blog.Repositories;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Scrutor;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +16,24 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
+
+builder.Services.Scan(scan => scan
+                    .FromApplicationDependencies()
+                    .AddClasses(classes => classes.InNamespaces("Blog.Repositories"))
+                    .UsingRegistrationStrategy(RegistrationStrategy.Skip)
+                    .AsImplementedInterfaces()
+                    .WithTransientLifetime()
+                );
+
+builder.Services.Scan(scan => scan
+                    .FromApplicationDependencies()
+                    .AddClasses(classes => classes.InNamespaces("Blog.Services"))
+                    .UsingRegistrationStrategy(RegistrationStrategy.Skip)
+                    .AsImplementedInterfaces()
+                    .WithTransientLifetime()
+                );
+
+
 
 var app = builder.Build();
 

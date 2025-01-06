@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Blog.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250106025443_Add-TestEntity-table")]
-    partial class AddTestEntitytable
+    [Migration("20250106035408_add-TestEntity-table")]
+    partial class addTestEntitytable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
