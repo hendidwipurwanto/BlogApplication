@@ -11,5 +11,6 @@ namespace Blog.Data
         {
         }
         public DbSet<TestEntity> TestEntities { get; set; }
+        public DbSet<BlogPost> BlogPosts { get; set; }
     }
 }
